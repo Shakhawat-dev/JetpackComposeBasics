@@ -13,7 +13,7 @@ koinAndroid = "3.5.4"
 koinAndroidxCompose = "3.5.0"
 koinAndroidxNavigation = "3.5.0"
 koinCore = "3.5.4"
-composeNavigation = "2.8.0"
+composeNavigation = "2.9.2"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }

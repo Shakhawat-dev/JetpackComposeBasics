@@ -6,8 +6,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.simecsystem.jetpackcomposebasics.ui.DetailsScreen
 
 import com.simecsystem.jetpackcomposebasics.ui.HomeScreen
+import kotlinx.serialization.Serializable
 
 @Composable
 fun AppNavGraph(
@@ -15,20 +17,25 @@ fun AppNavGraph(
     modifier: Modifier = Modifier
 ) {
 
-    NavHost(navController = navController, startDestination = Screen.Home) {
-        composable<Screen.Home> {
+    NavHost(navController = navController, startDestination = Screen.HomeScreen) {
+        composable<Screen.HomeScreen> {
             HomeScreen(
-
+                onNavigateToDetails = { navController.navigate(Screen.Details) }
             )
         }
-        composable<Screen.Details> {
 
+        composable<Screen.Details> {
+            DetailsScreen(
+                onNavigateBack = { navController.popBackStack() }
+            )
         }
     }
 }
-
+@Serializable
 sealed class Screen {
-    object Home : Screen()
-    object Details : Screen()
+    @Serializable
+    data object HomeScreen : Screen()
+    @Serializable
+    data object Details : Screen()
 
 }
